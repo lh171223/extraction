@@ -33,21 +33,36 @@ public class DataController {
         System.out.println(file);
         String pathString = null;
         if(file!=null) {
-            pathString = "E:/upload/" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" +file.getOriginalFilename();
+        //获取上传的文件名称
+        String filename = file.getOriginalFilename();
+        //文件上传时，chrome与IE/Edge对于originalFilename处理方式不同
+        //chrome会获取到该文件的直接文件名称，IE/Edge会获取到文件上传时完整路径/文件名
+        //Check for Unix-style path
+        int unixSep = filename.lastIndexOf('/');
+        //Check for Windows-style path
+        int winSep = filename.lastIndexOf('\\');
+        //cut off at latest possible point
+        int pos = (winSep > unixSep ? winSep:unixSep);
+        if (pos != -1)
+            filename = filename.substring(pos + 1);
+
+//        if(file!=null) {
+            pathString = "E:/upload/" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" +filename;
         }
         try {
-            File files=new File(pathString);
+            File files=new File(pathString);//在内存中创建File文件映射对象
             //打印查看上传路径
             System.out.println(pathString);
-            if(!files.getParentFile().exists()){
-                files.getParentFile().mkdirs();
+            if(!files.getParentFile().exists()){//判断映射文件的父文件是否真实存在
+                files.getParentFile().mkdirs();//创建所有父文件夹
             }
-            file.transferTo(files);
+            file.transferTo(files);//采用file.transferTo 来保存上传的文件
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return "{\"code\":0,\"msg\":\""+pathString+"\"}";
+        return "{\"code\":0,\"msg\":\""+pathString+"\"}";//2.27问题
+//        return pathString;//页面接受结果是如何
     }
 
 }
