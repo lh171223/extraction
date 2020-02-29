@@ -96,6 +96,7 @@
 </div>
 <script src="/static/layui/layui.js"></script>
 <script>
+    var files=[];
     //JavaScript代码区域
     layui.use(['element','upload'], function(){
         var $ = layui.jquery
@@ -109,6 +110,8 @@
             elem: '#testList'
             ,url: '/data/uploadSource' //改成您自己的上传接口https://httpbin.org/post
             ,accept: 'file'
+            ,exts: 'txt|rar|zip|doc|docx|pdf|xls|xlsx' //只允许上传
+            ,size:0
             ,multiple: true
             ,auto: false
             ,bindAction: '#testListAction'
@@ -146,11 +149,19 @@
                 });
             }
             ,done: function(res, index, upload){
-                if(res.files.file){ //上传成功
+                if (res.code == 0){
+                    files.push({"fileName":res.filename,"fileUrl":res.fileUrl,"fileSize":res.fileSize});//,"fileUrl":res.fileUrl
+                    var json = JSON.stringify(files);
+                    //将上传的文件信息加入到集合中并转换成json字符串
+                    $("#fileJson").attr("value",json);
+
+                    var fileUrl = res.fileUrl;
                     var tr = demoListView.find('tr#upload-'+ index)
                         ,tds = tr.children();
                     tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
-                    tds.eq(3).html(''); //清空操作
+                    tds.eq(3).html('<span>'+fileUrl+'</span>');
+                    // tds.eq(3).find('.demo-delete');//删除上传后的文件（仅仅删除了页面显示），需要在后台写一个删除controller？
+                    tds.eq(4).html(''); //清空操作
                     // tds.eq(4).find('.demo-delete').removeClass('layui-hide'); //如何在上传成功后也能删除（非文件队列中对象）
                     return delete this.files[index]; //删除文件队列已经上传成功的文件
                 }

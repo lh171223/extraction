@@ -1,2 +1,5 @@
-2.27
-Q：DataController.java 中上传返回值有问题
+2.29
+上传页面已经完成
+Q：删除上传后的文件（后台中的） 暂时未做
+Q2：java中调用已写过的python语言
+预处理：对上传的文档进行dataProcess

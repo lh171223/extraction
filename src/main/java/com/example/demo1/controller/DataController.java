@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,9 +26,10 @@ public class DataController {
         return "/pages/upload";
     }
 
+    //上传文件
     @RequestMapping(value="/uploadSource" , method = RequestMethod.POST)
     @ResponseBody
-    public String uploadSource(@RequestParam("file") MultipartFile file , HttpServletRequest request) {
+    public String uploadSource(@RequestParam("file") MultipartFile file ) {
         System.out.println(file);
         String pathString = null;
         if(file!=null) {
@@ -61,8 +61,18 @@ public class DataController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return "{\"code\":0,\"msg\":\""+pathString+"\"}";//2.27问题
-//        return pathString;//页面接受结果是如何
+        return "{\"code\":0, \"msg\":\"success\", \"fileUrl\":\"" + pathString + "\"}";
+
     }
+
+    //删除文件
+    @RequestMapping(value = "/delSource",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String delSource(@RequestParam("file") MultipartFile file){
+        System.out.println(file);
+        return null;
+    }
+
+
 
 }
