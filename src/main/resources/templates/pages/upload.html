@@ -12,30 +12,21 @@
         <div class="layui-logo">竹种资源数据提取系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
+            <li class="layui-nav-item"><a href="/user/manage">用户管理</a></li>
+
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="/static/layui/images/face/system/user.jpg" class="layui-nav-img">
-                    lh
+                    大鱼
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="/person/personal">基本资料</a></dd>
+                    <dd><a href="/user/password">修改密码</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
         </ul>
     </div>
 
@@ -44,24 +35,31 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">数据处理</a>
+                    <a class="" href="javascript:;">数据</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">上传数据</a></dd>
-                        <dd><a href="javascript:;">数据清理</a></dd>
-                        <dd><a href="javascript:;">数据清理</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="/data/spider">数据爬取</a></dd>
+                        <dd><a href="/data/upload">数据上传</a></dd>
+                        <dd><a href="/data/process">数据预处理</a></dd>
+                        <!--                        <dd><a href="javascript:;">数据清理</a></dd>-->
+                        <!--                        <dd><a href="">超链接</a></dd>-->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">自适应提取</a>
+                    <a href="javascript:;">模型识别</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">模型识别</a></dd>
-                        <dd><a href="javascript:;">识别效果</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="/regonition/regonized">识别处理</a></dd>
+                        <dd><a href="javascript:;">预测结果</a></dd>
+                        <!--                        <dd><a href="">超链接</a></dd>-->
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">（候选与筛选）抽取</a></li>
-                <li class="layui-nav-item"><a href="">表格显示结果</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">数据抽取</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/extraction/extract">实体抽取</a></dd>
+                        <dd><a href="javascript:;">抽取结果</a></dd>
+                        <!--                        <dd><a href="">超链接</a></dd>-->
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>

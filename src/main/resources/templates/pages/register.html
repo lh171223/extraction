@@ -17,10 +17,6 @@
                     <img src="/static/layui/images/face/system/user.jpg" class="layui-nav-img">
                     游客
                 </a>
-                <dl class="layui-nav-child">
-                <dd><a href="/user/register">登录</a></dd>
-                <dd><a href="/user/login">注册</a></dd>
-            </dl>
             </li>
         </ul>
     </div>
@@ -44,11 +40,16 @@
                     </div>
                     <div class="layui-form-mid layui-word-aux">至少六位数</div>
                 </div>
-
+                <div class="layui-form-item">
+                    <label class="layui-form-label">确认密码</label>
+                    <div class="layui-input-inline">
+                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">注意与以上密码保持一致</div>
+                </div>
 
                 <div class="layui-form-item">
                     <div class="layui-input-block"><!-- 划分后直接返回弹出消息处理成功就OK -->
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
                         <button class="layui-btn" lay-submit lay-filter="formDemo">注册</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>

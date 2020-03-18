@@ -73,6 +73,16 @@ public class DataController {
         return null;
     }
 
+    @RequestMapping(value = "/spider")
+    public String spider(){
+        return "/pages/spider";
+    }
+
+    @RequestMapping(value = "/process")
+    public String process(){
+        return "/pages/preproccess";
+    }
+
 
 
 }

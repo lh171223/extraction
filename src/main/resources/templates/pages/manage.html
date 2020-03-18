@@ -66,21 +66,36 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 170px;">
-            <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn">竹种数据库</button>
-                    <input type="text" name="title" required  lay-verify="required" placeholder="搜索" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block"><!-- 划分后直接返回弹出消息处理成功就OK -->
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">搜索</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
-                    </div>
-                </div>
-        </form>
+        <div style="padding: 30px;">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>加入时间</th>
+                    <th>密码</th>
+                    <th>个性签名</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>大鱼</td>
+                    <td>2020-03-01</td>
+                    <td>123456</td>
+                    <td>每天都在变瘦的大鱼</td>
+                </tr>
+                <tr>
+                    <td>虾米</td>
+                    <td>2020-12-16</td>
+                    <td>123456</td>
+                    <td>我的心是旷野的鸟,在你的眼睛里找到了它的天空</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

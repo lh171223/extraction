@@ -66,36 +66,45 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 170px;">
+        <div style="padding: 30px;">
             <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn">竹种数据库</button>
-                    <input type="text" name="title" required  lay-verify="required" placeholder="搜索" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block"><!-- 划分后直接返回弹出消息处理成功就OK -->
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">搜索</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+
+                <div class="layui-form-item"><!--需要显示用户名-->
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-        </form>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block"><!-- 划分后直接返回弹出消息处理成功就OK -->
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">修改个人资料</button>
+<!--                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © layui.com - 底部固定区域
         </div>
     </div>
+    <script src="/static/layui/layui.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use(['element','form'], function(){
+            var element = layui.element
+                ,form = layui.form;
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
-</div>
-<script src="/static/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
-</script>
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>

@@ -66,36 +66,68 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 170px;">
+        <div style="padding: 30px;">
             <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn">竹种数据库</button>
-                    <input type="text" name="title" required  lay-verify="required" placeholder="搜索" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+
                 <div class="layui-form-item">
-                    <div class="layui-input-block"><!-- 划分后直接返回弹出消息处理成功就OK -->
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">搜索</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">清空</button>
+                    <label class="layui-form-label">处理后的语料</label>
+                    <div class="layui-input-block">
+                        <select name="city" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">baoboodata.txt</option>
+                            <option value="1">上海</option>
+                            <option value="2">广州</option>
+                            <option value="3">深圳</option>
+                            <option value="4">杭州</option>
+                        </select>
                     </div>
                 </div>
-        </form>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">特征标记</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="like[dai]" title="词性标注">
+                        <input type="checkbox" name="like[dai]" title="指示词标注">
+                        <input type="checkbox" name="like[write]" title="本体领域词典特征">
+                        <input type="checkbox" name="like[read]" title="词向量特征">
+                        <input type="checkbox" name="like[read]" title="边界标识">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block"><!-- 划分后直接返回弹出消息处理成功就OK -->
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">数据集划分</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">开始训练</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">预测结果</label>
+                    <div class="layui-input-block">
+                        <textarea name="desc" placeholder="预测结果显示区域" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © layui.com - 底部固定区域
         </div>
     </div>
+    <script src="/static/layui/layui.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use(['element','form'], function(){
+            var element = layui.element
+                ,form = layui.form;
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
-</div>
-<script src="/static/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
-</script>
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>
